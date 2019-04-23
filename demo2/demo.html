@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="../jquery2.0.0.min.js"></script>
+    <script src="../marked.min.js"></script>
+    <script src="../mdStyle.js"></script>
+    <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+
+<!--<a href="#demo1.md">demo1</a>-->
+<!--<a href="#demo2.md">demo2</a>-->
+<!--<a href="#demo3.md">demo3</a>-->
+<script type="text/javascript">
+    (function(){
+        mdStyle.init();
+        function changeHash(mdName){
+            let showNav = true;//是否显示导航栏
+            let dir = "";   //md文件的目录
+            if(mdName==""){
+                mdName = "demo.md";
+                showNav = false;
+            }
+            $.get(dir + mdName,function(data){
+                mdStyle.backFunc(data,showNav)
+            })
+        }
+        // console.log("1:"+window.location.hash+"string:"+typeof(window.location.hash));
+        let mdNameHash = window.location.hash.replace("#","");
+        changeHash(mdNameHash);
+        $(window).bind("hashchange",function(){
+            mdNameHash = window.location.hash.replace("#","");
+            console.log(mdNameHash);
+            changeHash(mdNameHash);
+        });
+    })();
+</script>
+
+</body>
+</html>

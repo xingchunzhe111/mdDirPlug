@@ -4,11 +4,12 @@ let mdStyle = (function(){
             $("body").append("<div id=\"markdown-content\" ></div>");
             return this;
         },
-        backFunc:function(response){
+        backFunc:function(response,showNavBarOpen){
             $("#markdown-content").html(marked(response));
 
             //是否显示导航栏
-            let showNavBar = true;
+            let showNavBar = typeof(showNavBarOpen)!="undefined" ? showNavBarOpen : true;
+            console.log(showNavBar);
             //是否展开导航栏
             let expandNavBar = true;
             let body = $("body");
