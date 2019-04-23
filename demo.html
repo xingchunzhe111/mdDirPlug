@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+<script src="./jquery2.0.0.min.js"></script>
+<script src="./marked.min.js"></script>
+<script src="./mdStyle.js"></script>
+<link rel="stylesheet" href="./main.css">
+<script type="text/javascript">
+    (function(){
+        $.get("demo.md",function(data){
+            mdStyle.init().backFunc(data)
+        })
+    })();
+</script>
+
+</body>
+</html>
